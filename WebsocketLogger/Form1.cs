@@ -57,7 +57,22 @@ namespace RP3_Interface
         /// </summary>
         private void Update(object sender, EventArgs e)
         {
-            MessageText.Text = lastMessage;
+        }
+
+        private void FileButton_Click(object sender, EventArgs e)
+        {
+            LogFileDialog.ShowDialog();
+        }
+
+        private void LogFileDialog_FileOk(object sender, CancelEventArgs e)
+        {
+            MessageText.Text = LogFileDialog.FileName;
+
+            //write "file opened" to the file selected
+            System.IO.StreamWriter file = new System.IO.StreamWriter(LogFileDialog.FileName);
+            file.WriteLine("File opened");
+            file.Close();
+            
         }
     }
 }
