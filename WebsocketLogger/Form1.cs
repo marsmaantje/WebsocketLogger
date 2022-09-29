@@ -16,6 +16,9 @@ namespace RP3_Interface
     {
         public static bool formOpen = true;
         string lastMessage = "";
+
+        StringBuilder log = new StringBuilder();
+        
         WebSocketServer wss;
         List<IWebSocketConnection> allSockets = new List<IWebSocketConnection>();
 
@@ -44,6 +47,11 @@ namespace RP3_Interface
         void OnMessage(string message)
         {
             lastMessage = message;
+            log.Append(message);
+            if (NewlineCheckbox.Checked)
+                log.Append(Environment.NewLine);
+
+            CacheSizeText.Text = log.Length.ToString();
         }
 
         void formClosing(object sender, EventArgs e)
@@ -57,6 +65,7 @@ namespace RP3_Interface
         /// </summary>
         private void Update(object sender, EventArgs e)
         {
+            
         }
 
         private void FileButton_Click(object sender, EventArgs e)
@@ -66,13 +75,20 @@ namespace RP3_Interface
 
         private void LogFileDialog_FileOk(object sender, CancelEventArgs e)
         {
-            MessageText.Text = LogFileDialog.FileName;
+            FilePathDialog.Text = LogFileDialog.FileName;
 
             //write "file opened" to the file selected
             System.IO.StreamWriter file = new System.IO.StreamWriter(LogFileDialog.FileName);
             file.WriteLine("File opened");
             file.Close();
             
+        }
+
+        private void SaveFile_Click(object sender, EventArgs e)
+        {
+            System.IO.StreamWriter file = new System.IO.StreamWriter(LogFileDialog.FileName);
+            file.WriteLine(log.ToString());
+            file.Close();
         }
     }
 }
