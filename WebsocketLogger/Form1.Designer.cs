@@ -36,12 +36,17 @@
             this.FilePathDialog = new System.Windows.Forms.TextBox();
             this.CacheSizeText = new System.Windows.Forms.Label();
             this.NewlineCheckbox = new System.Windows.Forms.CheckBox();
+            this.ApplicationStateText = new System.Windows.Forms.Label();
+            this.AutoSaveSizeField = new System.Windows.Forms.TextBox();
+            this.StartStopButton = new System.Windows.Forms.Button();
+            this.CacheAutosaveLabel = new System.Windows.Forms.Label();
+            this.AppendCheckBox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // MessageText
             // 
             this.MessageText.AutoSize = true;
-            this.MessageText.Location = new System.Drawing.Point(518, 306);
+            this.MessageText.Location = new System.Drawing.Point(9, 58);
             this.MessageText.Name = "MessageText";
             this.MessageText.Size = new System.Drawing.Size(72, 13);
             this.MessageText.TabIndex = 0;
@@ -54,7 +59,7 @@
             // 
             // FileButton
             // 
-            this.FileButton.Location = new System.Drawing.Point(596, 150);
+            this.FileButton.Location = new System.Drawing.Point(354, 9);
             this.FileButton.Name = "FileButton";
             this.FileButton.Size = new System.Drawing.Size(75, 23);
             this.FileButton.TabIndex = 1;
@@ -64,7 +69,7 @@
             // 
             // SaveFile
             // 
-            this.SaveFile.Location = new System.Drawing.Point(521, 587);
+            this.SaveFile.Location = new System.Drawing.Point(12, 138);
             this.SaveFile.Name = "SaveFile";
             this.SaveFile.Size = new System.Drawing.Size(75, 23);
             this.SaveFile.TabIndex = 2;
@@ -75,7 +80,7 @@
             // FilePathDialog
             // 
             this.FilePathDialog.Enabled = false;
-            this.FilePathDialog.Location = new System.Drawing.Point(254, 153);
+            this.FilePathDialog.Location = new System.Drawing.Point(12, 12);
             this.FilePathDialog.Name = "FilePathDialog";
             this.FilePathDialog.Size = new System.Drawing.Size(336, 20);
             this.FilePathDialog.TabIndex = 3;
@@ -83,7 +88,7 @@
             // CacheSizeText
             // 
             this.CacheSizeText.AutoSize = true;
-            this.CacheSizeText.Location = new System.Drawing.Point(524, 419);
+            this.CacheSizeText.Location = new System.Drawing.Point(9, 82);
             this.CacheSizeText.Name = "CacheSizeText";
             this.CacheSizeText.Size = new System.Drawing.Size(59, 13);
             this.CacheSizeText.TabIndex = 4;
@@ -94,7 +99,7 @@
             this.NewlineCheckbox.AutoSize = true;
             this.NewlineCheckbox.Checked = true;
             this.NewlineCheckbox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.NewlineCheckbox.Location = new System.Drawing.Point(785, 156);
+            this.NewlineCheckbox.Location = new System.Drawing.Point(12, 38);
             this.NewlineCheckbox.Name = "NewlineCheckbox";
             this.NewlineCheckbox.Size = new System.Drawing.Size(108, 17);
             this.NewlineCheckbox.TabIndex = 6;
@@ -102,11 +107,69 @@
             this.NewlineCheckbox.ThreeState = true;
             this.NewlineCheckbox.UseVisualStyleBackColor = true;
             // 
+            // ApplicationStateText
+            // 
+            this.ApplicationStateText.AutoSize = true;
+            this.ApplicationStateText.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ApplicationStateText.ForeColor = System.Drawing.Color.Red;
+            this.ApplicationStateText.Location = new System.Drawing.Point(12, 322);
+            this.ApplicationStateText.Name = "ApplicationStateText";
+            this.ApplicationStateText.Size = new System.Drawing.Size(77, 20);
+            this.ApplicationStateText.TabIndex = 7;
+            this.ApplicationStateText.Text = "Stopped";
+            // 
+            // AutoSaveSizeField
+            // 
+            this.AutoSaveSizeField.Enabled = false;
+            this.AutoSaveSizeField.Location = new System.Drawing.Point(12, 98);
+            this.AutoSaveSizeField.Name = "AutoSaveSizeField";
+            this.AutoSaveSizeField.Size = new System.Drawing.Size(75, 20);
+            this.AutoSaveSizeField.TabIndex = 8;
+            // 
+            // StartStopButton
+            // 
+            this.StartStopButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StartStopButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.StartStopButton.Location = new System.Drawing.Point(12, 296);
+            this.StartStopButton.Name = "StartStopButton";
+            this.StartStopButton.Size = new System.Drawing.Size(75, 23);
+            this.StartStopButton.TabIndex = 9;
+            this.StartStopButton.Text = "Start";
+            this.StartStopButton.UseVisualStyleBackColor = true;
+            this.StartStopButton.Click += new System.EventHandler(this.StartStopButton_Click);
+            // 
+            // CacheAutosaveLabel
+            // 
+            this.CacheAutosaveLabel.AutoSize = true;
+            this.CacheAutosaveLabel.Location = new System.Drawing.Point(93, 105);
+            this.CacheAutosaveLabel.Name = "CacheAutosaveLabel";
+            this.CacheAutosaveLabel.Size = new System.Drawing.Size(107, 13);
+            this.CacheAutosaveLabel.TabIndex = 10;
+            this.CacheAutosaveLabel.Text = "Autosave Cache size";
+            // 
+            // AppendCheckBox
+            // 
+            this.AppendCheckBox.AutoSize = true;
+            this.AppendCheckBox.Checked = true;
+            this.AppendCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.AppendCheckBox.Location = new System.Drawing.Point(135, 38);
+            this.AppendCheckBox.Name = "AppendCheckBox";
+            this.AppendCheckBox.Size = new System.Drawing.Size(115, 17);
+            this.AppendCheckBox.TabIndex = 11;
+            this.AppendCheckBox.Text = "Append data to file";
+            this.AppendCheckBox.ThreeState = true;
+            this.AppendCheckBox.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1321, 865);
+            this.ClientSize = new System.Drawing.Size(448, 357);
+            this.Controls.Add(this.AppendCheckBox);
+            this.Controls.Add(this.CacheAutosaveLabel);
+            this.Controls.Add(this.StartStopButton);
+            this.Controls.Add(this.AutoSaveSizeField);
+            this.Controls.Add(this.ApplicationStateText);
             this.Controls.Add(this.NewlineCheckbox);
             this.Controls.Add(this.CacheSizeText);
             this.Controls.Add(this.FilePathDialog);
@@ -129,6 +192,11 @@
         private System.Windows.Forms.TextBox FilePathDialog;
         private System.Windows.Forms.Label CacheSizeText;
         private System.Windows.Forms.CheckBox NewlineCheckbox;
+        private System.Windows.Forms.Label ApplicationStateText;
+        private System.Windows.Forms.TextBox AutoSaveSizeField;
+        private System.Windows.Forms.Button StartStopButton;
+        private System.Windows.Forms.Label CacheAutosaveLabel;
+        private System.Windows.Forms.CheckBox AppendCheckBox;
     }
 }
 

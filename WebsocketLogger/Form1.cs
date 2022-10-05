@@ -22,28 +22,51 @@ namespace RP3_Interface
         WebSocketServer wss;
         List<IWebSocketConnection> allSockets = new List<IWebSocketConnection>();
 
+        bool isRunning = false;
+
 
         public Form1()
         {
             CheckForIllegalCrossThreadCalls = false;
             InitializeComponent();
-            Console.WriteLine("hello world");
 
             Timer updateClock = new Timer();
             updateClock.Interval = 1000 / 10;
             updateClock.Tick += Update;
             updateClock.Start();
 
-            wss = new WebSocketServer("ws://127.0.0.1:2071");
+        }
+
+        private void Start()
+        {
+            wss = new WebSocketServer("ws://127.0.0.1:2071"); 
             wss.Start( socket =>
             {
                 socket.OnOpen = () => { allSockets.Add(socket); };
                 socket.OnClose = () => { allSockets.Remove(socket); };
                 socket.OnMessage += OnMessage;
             });
-            
+            AppendCheckBox.Enabled = false;
+
+            StartStopButton.Text = "Stop";
+            StartStopButton.ForeColor = Color.Red;
+            ApplicationStateText.Text = "Running";
+            ApplicationStateText.ForeColor = Color.Green;
+            isRunning = true;
         }
 
+        private void Stop()
+        {
+            wss.Dispose();
+            AppendCheckBox.Enabled = true;
+
+            StartStopButton.Text = "Start";
+            StartStopButton.ForeColor = Color.Green;
+            ApplicationStateText.Text = "Stopped";
+            ApplicationStateText.ForeColor = Color.Red;
+            isRunning = false;
+        }
+        
         void OnMessage(string message)
         {
             lastMessage = message;
@@ -80,6 +103,7 @@ namespace RP3_Interface
             //write "file opened" to the file selected
             System.IO.StreamWriter file = new System.IO.StreamWriter(LogFileDialog.FileName);
             file.WriteLine("File opened");
+            
             file.Close();
             
         }
@@ -89,6 +113,18 @@ namespace RP3_Interface
             System.IO.StreamWriter file = new System.IO.StreamWriter(LogFileDialog.FileName);
             file.WriteLine(log.ToString());
             file.Close();
+        }
+
+        private void StartStopButton_Click(object sender, EventArgs e)
+        {
+            if(isRunning)
+            {
+                Stop();
+            }
+            else
+            {
+                Start();
+            }
         }
     }
 }
