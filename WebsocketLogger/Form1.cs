@@ -14,6 +14,7 @@ namespace RP3_Interface
 {
     public partial class Form1 : Form
     {
+        #region variables
         public static bool formOpen = true;
         string lastMessage = "";
 
@@ -23,8 +24,9 @@ namespace RP3_Interface
         List<IWebSocketConnection> allSockets = new List<IWebSocketConnection>();
 
         bool isRunning = false;
+        #endregion
 
-
+        #region begin/end
         public Form1()
         {
             CheckForIllegalCrossThreadCalls = false;
@@ -36,7 +38,7 @@ namespace RP3_Interface
             updateClock.Start();
 
         }
-
+        
         private void Start()
         {
             wss = new WebSocketServer("ws://127.0.0.1:2071"); 
@@ -67,6 +69,23 @@ namespace RP3_Interface
             isRunning = false;
         }
         
+
+        void formClosing(object sender, EventArgs e)
+        {
+            wss.Dispose();
+            formOpen = false;
+        }
+        #endregion
+
+        /// <summary>
+        /// Update method, gets run on a loop while the window is open.
+        /// </summary>
+        private void Update(object sender, EventArgs e)
+        {
+            
+        }
+
+        #region events
         void OnMessage(string message)
         {
             lastMessage = message;
@@ -75,20 +94,6 @@ namespace RP3_Interface
                 log.Append(Environment.NewLine);
 
             CacheSizeText.Text = log.Length.ToString();
-        }
-
-        void formClosing(object sender, EventArgs e)
-        {
-            wss.Dispose();
-            formOpen = false;
-        }
-
-        /// <summary>
-        /// Update method, gets run on a loop while the window is open.
-        /// </summary>
-        private void Update(object sender, EventArgs e)
-        {
-            
         }
 
         private void FileButton_Click(object sender, EventArgs e)
@@ -126,5 +131,6 @@ namespace RP3_Interface
                 Start();
             }
         }
+        #endregion
     }
 }
