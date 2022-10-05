@@ -120,7 +120,6 @@
             // 
             // AutoSaveSizeField
             // 
-            this.AutoSaveSizeField.Enabled = false;
             this.AutoSaveSizeField.Location = new System.Drawing.Point(12, 98);
             this.AutoSaveSizeField.Name = "AutoSaveSizeField";
             this.AutoSaveSizeField.Size = new System.Drawing.Size(75, 20);
