@@ -37,10 +37,12 @@
             this.CacheSizeText = new System.Windows.Forms.Label();
             this.NewlineCheckbox = new System.Windows.Forms.CheckBox();
             this.ApplicationStateText = new System.Windows.Forms.Label();
-            this.AutoSaveSizeField = new System.Windows.Forms.TextBox();
             this.StartStopButton = new System.Windows.Forms.Button();
             this.CacheAutosaveLabel = new System.Windows.Forms.Label();
             this.AppendCheckBox = new System.Windows.Forms.CheckBox();
+            this.AutoSaveSizeField = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.AutoSaveSizeField)).BeginInit();
             this.SuspendLayout();
             // 
             // MessageText
@@ -118,13 +120,6 @@
             this.ApplicationStateText.TabIndex = 7;
             this.ApplicationStateText.Text = "Stopped";
             // 
-            // AutoSaveSizeField
-            // 
-            this.AutoSaveSizeField.Location = new System.Drawing.Point(12, 98);
-            this.AutoSaveSizeField.Name = "AutoSaveSizeField";
-            this.AutoSaveSizeField.Size = new System.Drawing.Size(75, 20);
-            this.AutoSaveSizeField.TabIndex = 8;
-            // 
             // StartStopButton
             // 
             this.StartStopButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -140,7 +135,7 @@
             // CacheAutosaveLabel
             // 
             this.CacheAutosaveLabel.AutoSize = true;
-            this.CacheAutosaveLabel.Location = new System.Drawing.Point(93, 105);
+            this.CacheAutosaveLabel.Location = new System.Drawing.Point(138, 100);
             this.CacheAutosaveLabel.Name = "CacheAutosaveLabel";
             this.CacheAutosaveLabel.Size = new System.Drawing.Size(107, 13);
             this.CacheAutosaveLabel.TabIndex = 10;
@@ -159,15 +154,44 @@
             this.AppendCheckBox.ThreeState = true;
             this.AppendCheckBox.UseVisualStyleBackColor = true;
             // 
+            // AutoSaveSizeField
+            // 
+            this.AutoSaveSizeField.Location = new System.Drawing.Point(12, 98);
+            this.AutoSaveSizeField.Maximum = new decimal(new int[] {
+            1661992960,
+            1808227885,
+            5,
+            0});
+            this.AutoSaveSizeField.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            -2147483648});
+            this.AutoSaveSizeField.Name = "AutoSaveSizeField";
+            this.AutoSaveSizeField.Size = new System.Drawing.Size(120, 20);
+            this.AutoSaveSizeField.TabIndex = 12;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.label1.Location = new System.Drawing.Point(138, 113);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(66, 13);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "-1 for no limit";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(448, 357);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.AutoSaveSizeField);
             this.Controls.Add(this.AppendCheckBox);
             this.Controls.Add(this.CacheAutosaveLabel);
             this.Controls.Add(this.StartStopButton);
-            this.Controls.Add(this.AutoSaveSizeField);
             this.Controls.Add(this.ApplicationStateText);
             this.Controls.Add(this.NewlineCheckbox);
             this.Controls.Add(this.CacheSizeText);
@@ -177,6 +201,7 @@
             this.Controls.Add(this.MessageText);
             this.Name = "Form1";
             this.Text = "Form1";
+            ((System.ComponentModel.ISupportInitialize)(this.AutoSaveSizeField)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -192,10 +217,11 @@
         private System.Windows.Forms.Label CacheSizeText;
         private System.Windows.Forms.CheckBox NewlineCheckbox;
         private System.Windows.Forms.Label ApplicationStateText;
-        private System.Windows.Forms.TextBox AutoSaveSizeField;
         private System.Windows.Forms.Button StartStopButton;
         private System.Windows.Forms.Label CacheAutosaveLabel;
         private System.Windows.Forms.CheckBox AppendCheckBox;
+        private System.Windows.Forms.NumericUpDown AutoSaveSizeField;
+        private System.Windows.Forms.Label label1;
     }
 }
 
